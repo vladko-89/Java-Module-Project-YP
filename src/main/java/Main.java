@@ -6,30 +6,34 @@ public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
+        Validator validator = new Validator();
+        Cart cart = new Cart();
+        Formatter formatter = new Formatter();
+        Calculate calculate = new Calculate();
+
         System.out.println("Введите количество гостей");
 
-        int countPerson = Validator.verifyInt();
+        int countPerson = validator.verifyInt();
 
         String event = "";
 
-        while (!event.contains("завершить")) {
+        while (!event.equalsIgnoreCase("Завершить")) {
             System.out.println("Введите наименование товара");
-            String name = scanner.next();
+            String name = validator.verifyString();
             System.out.println("Введите стоимость товара");
-            double cost = Validator.verifyDouble();
-            String currency = Formatter.formate((int) Math.floor(cost));
+            double cost = validator.verifyDouble();
+            String currency = formatter.formate((int) Math.floor(cost));
 
-
-            Cart.addPurchase(name, cost, currency);
-            Calculate.sum(cost);
+            cart.addPurchase(name, cost, currency);
+            calculate.sum(cost);
 
             System.out.println("Добавить новый товар? Чтобы перейти к расчету введите 'Завершить'");
             event = scanner.next();
 
         }
-        Cart.printPurchaseList();
-        double partPayment = Calculate.getResult(countPerson);
-        String currency = Formatter.formate((int) Math.floor(partPayment));
+        cart.printPurchaseList();
+        double partPayment = calculate.getResult(countPerson);
+        String currency = formatter.formate((int) Math.floor(partPayment));
         System.out.println("Нужно оплатить по " + String.format("%.2f", partPayment) + currency);
     }
 

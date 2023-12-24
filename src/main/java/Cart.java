@@ -1,7 +1,7 @@
 public class Cart {
     static String purchaseList = "";
     
-    public static void addPurchase(String name, double cost, String str) {
+    public void addPurchase(String name, double cost, String str) {
         if (purchaseList == "") {
             purchaseList = "Добавленные товары: \n\n" + name + ":     " + String.format("%.2f",cost) + str + "\n";
             System.out.println("Товар " + name + " стоимостью " + String.format("%.2f",cost) + str + " успешно сохранен");
@@ -14,7 +14,7 @@ public class Cart {
 
     }
 
-    public static void printPurchaseList() {
+    public void printPurchaseList() {
         System.out.println(purchaseList);
     }
 }

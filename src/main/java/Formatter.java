@@ -1,6 +1,6 @@
 public class Formatter {
     
-    public static String formate(int num) {
+    public String formate(int num) {
         int res = num;
         while (res > 20) {
             res = res % 10;

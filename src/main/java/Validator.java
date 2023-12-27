@@ -10,6 +10,7 @@ public class Validator {
         while (!verifyDouble) {
             if (scanner.hasNextDouble()) {
                 double tmp = scanner.nextDouble();
+                scanner.nextLine();
                 if (tmp > 0) {
                     res = tmp;
                     verifyDouble = true;
@@ -30,11 +31,12 @@ public class Validator {
         int res = 0;
 
         while (!verify) {
-            if (!scanner.hasNextInt()) {
+            if (!scanner.useDelimiter("\n").hasNextInt()) {
                 System.out.println("Не тот формат ввода. Введите целое число");
-                scanner.nextLine();
+
             } else {
-                int tmp = scanner.nextInt();
+                int tmp = scanner.useDelimiter("\n").nextInt();
+                scanner.nextLine();
                 if (tmp < 2) {
                     System.out.println("Значение должно быть больше или равно 2");
                 } else {
@@ -48,14 +50,16 @@ public class Validator {
 
     public String verifyString() {
         boolean verify = false;
-        String res = scanner.nextLine();
+        String res = "";
 
         while (!verify) {
-            if (res.isEmpty()) {
+            String tmp = scanner.nextLine().trim();
+            if (tmp.isEmpty()) {
                 System.out.println("Наименование не может быть пустым");
-                res = scanner.nextLine();
+
             } else {
                 verify = true;
+                res = tmp;
             }
 
         }

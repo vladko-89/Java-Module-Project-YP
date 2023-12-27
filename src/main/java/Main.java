@@ -30,6 +30,7 @@ public class Main {
             System.out.println("Добавить новый товар? Чтобы перейти к расчету введите 'Завершить'");
             event = scanner.next();
 
+
         }
         cart.printPurchaseList();
         double partPayment = calculate.getResult(countPerson);

@@ -16,7 +16,7 @@ public class Validator {
                     verifyDouble = true;
                 } else {
                     System.out.println("Стоимость не может быть меньше 0");
-                    scanner.nextLine();
+
                 }
             } else {
                 System.out.println("Не тот формат ввода. Повторите");
@@ -33,7 +33,7 @@ public class Validator {
         while (!verify) {
             if (!scanner.useDelimiter("\n").hasNextInt()) {
                 System.out.println("Не тот формат ввода. Введите целое число");
-
+                scanner.nextLine();
             } else {
                 int tmp = scanner.useDelimiter("\n").nextInt();
                 scanner.nextLine();
